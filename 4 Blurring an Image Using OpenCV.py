@@ -1,4 +1,13 @@
 import cv2
+
+def blur(image):
+    kernels = [3,4,5,7,9,15]
+    for idx, k in enumerate(kernels):
+        image_bl = cv2.blur(image, ksize = (k,k))
+        cv2.imshow(str(k), image_bl)
+        cv2.waitKey(0)
+    return
+
 def resize(fname, width, height):
     image = cv2.imread(fname)
     cv2.imshow('Original Image', image)
@@ -18,3 +27,5 @@ def resize(fname, width, height):
 filename, new_image = resize('bird.jpg', 1280, 960)
 cv2.imshow('resized image', new_image)
 cv2.waitKey(0)
+
+blur(new_image)
